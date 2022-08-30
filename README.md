@@ -4,7 +4,7 @@ Este buscador permite encontrar y listar una cantidad a elegir de artículos de 
 
 
 ## Desarrollado por
-|<img src="https://user-images.githubusercontent.com/63131135/187323526-d2dd4d8a-9cd3-4a32-b16b-01e288c74376.png" width=200px>|
-|:---:|
-|Edgar Sabido <br> [@EdgarSabidoC](https://github.com/EdgarSabidoC)|
+|<img src="https://user-images.githubusercontent.com/63131135/187323526-d2dd4d8a-9cd3-4a32-b16b-01e288c74376.png" width=200px>|<img src="" width=200px>|
+|:---:|:---:|
+|Edgar Sabido <br> [@EdgarSabidoC](https://github.com/EdgarSabidoC)|Carlos Antonio Ruiz Domínguez<br> [@carlosruiz01](https://github.com/carlosruiz01)|
 
