@@ -6,5 +6,5 @@ Este buscador permite encontrar y listar una cantidad a elegir de artículos de 
 ## Desarrollado por
 |<img src="https://user-images.githubusercontent.com/63131135/187323526-d2dd4d8a-9cd3-4a32-b16b-01e288c74376.png" width=200px>|
 |:--:|
-|Edgar Sabido Edgar Sabido <br> [@EdgarSabidoC](https://github.com/EdgarSabidoC)|
+|Edgar Sabido <br> [@EdgarSabidoC](https://github.com/EdgarSabidoC)|
 
