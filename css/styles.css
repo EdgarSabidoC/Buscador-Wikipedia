@@ -26,7 +26,7 @@ body {
 
 /* Valores de la clase searchBox */
 .searchBox {
-	width: 31%;
+	width: 250px;
 }
 
 /* Valores del elemento select */
@@ -52,22 +52,29 @@ h2 {
 }
 
 /* Comportamiento de los enlaces */
-a:link,
-a:visited,
-a:active {
+.url:link,
+.url:visited,
+.url:active {
 	color: #7fff00;
 }
 
 /* Comportamiento del enlace cuando se sitúa el mouse encima */
-a:hover {
-	color: cyan;
+.url:hover {
+	color: red;
 }
 
 /* Valores de la clase container */
 .container {
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: left;
+}
+
+.subContainer {
+	width: 100%;
 	overflow: auto;
-	width: 50%;
-	height: auto;
+	height: 60vh;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: left;
@@ -75,21 +82,19 @@ a:hover {
 
 .subtitle,
 .datum {
+	color: rgb(137, 195, 214);
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.data {
+	font-size: 13px;
+}
+
+.datumTitle {
 	color: lightblue;
 	font-weight: bold;
-}
-
-.emoji {
-	display: block;
-	font-size: 35px;
-	padding-bottom: 15px;
-	text-align: right;
-	text-decoration: none;
-}
-
-.emoji:hover {
-	font-size: 36px;
-	text-decoration: none;
+	font-size: 20px;
 }
 
 .text {
@@ -98,9 +103,13 @@ a:hover {
 }
 
 footer {
-	position: absolute;
+	position: fixed;
 	bottom: 8px;
+	left: 0;
 	width: 100%;
-	height: 2.5rem;
 	text-align: center;
+}
+
+.numberOfArticles {
+	width: 215px;
 }
