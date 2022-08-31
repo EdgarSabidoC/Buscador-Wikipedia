@@ -26,7 +26,7 @@ body {
 
 /* Valores de la clase searchBox */
 .searchBox {
-	width: 250px;
+	width: 40vh;
 }
 
 /* Valores del elemento select */
@@ -111,5 +111,5 @@ footer {
 }
 
 .numberOfArticles {
-	width: 215px;
+	width: 180px;
 }

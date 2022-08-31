@@ -30,9 +30,8 @@
 		<!-- El idioma por defecto es el Español -->
 		<hr>
 		<select name="languages"
-						id="languages"
-						required>
-			<option value="" selected disabled>Seleccionar un idioma</option>
+						id="languages">
+			<option value="" selected disabled>Seleccionar idioma</option>
 			<option value="en">English</option>
 			<option value="es">Español</option>
 			<option value="it">Italiano</option>
@@ -40,9 +39,8 @@
 			<option value="pt">Português</option>
 		</select>
 		<select name="sortType"
-						id="sortType"
-						required>
-			<option value="" selected disabled>Seleccionar un tipo de ordenamiento</option>
+						id="sortType">
+			<option value="" selected disabled>Ordenar por</option>
 			<option value="relevance">Relevancia</option>
 			<option value="last_edit_asc">Fecha Ascendente</option>
 			<option value="last_edit_desc">Fecha Descendente</option>
@@ -53,9 +51,8 @@
 		<br>
 		<input class="numberOfArticles"
 					type="number" id="numberOfArticles"
-					placeholder="Cantidad de artículos (500 máx)"
-					name="numberOfArticles" min="1" max="500"
-					required>
+					placeholder="No. de artículos (500 máx)"
+					name="numberOfArticles" min="1" max="500">
 		<hr>
 		<input type="submit" name="submitButton" value="Buscar">
 		<input type="reset" value="Reiniciar campos">
