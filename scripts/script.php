@@ -1,6 +1,10 @@
 <?php
 	include "formValidations.php";
 
+	if (!checkLang() || !checkSortType()) {
+		exit;
+	}
+
 	// Cadena a buscar:
 	$searchString = $_POST["searchBox"];
 
@@ -77,11 +81,11 @@
 	$cont = 1; // Contador que sirve para imprimir un emoji para regresar al inicio de la página.
 	foreach($wikiPages as $wiki){
 		$date = date('d/m/Y H:i:s', strtotime($wiki[3]));
-		echo "<p class=\"text\"><span class=\"datum\">Title:</span> {$wiki[1]}<br>" .
-		"<span class=\"datum\">Snippet:</span> {$wiki[4]}<br>" .
+		"{$wiki[1]}<br>" .
+		"{$wiki[4]}<br>" .
 		"<span class=\"datum\">Size (in bytes):</span> {$wiki[2]}<br>" .
-		"<span class=\"datum\">Timestamp:</span> {$date}<br>" .
-		"<span class=\"datum\">Link:</span> <a href=\"https://{$lang}.wikipedia.org/?curid=$wiki[0]
+		"<span class=\"datum\">Last edition:</span> {$date}<br>" .
+		"<span class=\"datum\">URL:</span> <a href=\"https://{$lang}.wikipedia.org/?curid=$wiki[0]
 			target=\"_blank\"
 			rel=\"nofollow\">https://{$lang}.wikipedia.org/?curid=$wiki[0]</a></p><br><br>";
 			if ($cont % 10 === 0) {
@@ -89,4 +93,7 @@
 			}
 			$cont++;
 	}
+
+	// echo "<p class=\"text\"><span class=\"datum\">Title:</span> {$wiki[1]}<br>" .
+			// "<span class=\"datum\">Snippet:</span> {$wiki[4]}<br>" .
 ?>
