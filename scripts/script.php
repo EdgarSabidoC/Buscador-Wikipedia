@@ -30,7 +30,7 @@
 			"action" => "query",
 			"list" => "search",
 			"srsearch" => $searchString,
-			"srsort" => 'none',
+			"srsort" => 'relevance',
 			"srlimit" => $numberOfArticles,
 			"format" => "json"
 		];
@@ -51,16 +51,16 @@
 
 	// Si se decidió ordenar por tamaño de página:
 	if($sortType === 'pageSizeDes') {
-		// Se ordena por tamaño de página de forma descendente:
-		usort($results['query']['search'], function ($a, $b) {
-			return $b['size'] <=> $a['size'];
-		});
-	} elseif($sortType === 'pageSizeAsc') {
-		// Se ordena por tamaño de página de forma ascendente:
-		usort($results['query']['search'], function ($a, $b) {
-			return $a['size'] <=> $b['size'];
-		});
-	}
+			// Se ordena por tamaño de página de forma descendente:
+			usort($results['query']['search'], function ($a, $b) {
+				return $b['size'] <=> $a['size'];
+			});
+		} elseif($sortType === 'pageSizeAsc') {
+			// Se ordena por tamaño de página de forma ascendente:
+			usort($results['query']['search'], function ($a, $b) {
+				return $a['size'] <=> $b['size'];
+			});
+		}
 
 	// Se guardan los elementos en el array asociativo (pageid, title, size, timestamp):
 	foreach($results['query']['search'] as $search){
@@ -73,7 +73,35 @@
 
 	// Se generan los párrafos con la información obtenida dentro del contenedor:
 	$numberOfResults = count($results['query']['search']);
-	echo "<hr><h2>Los {$numberOfResults} resultados de la búsqueda con las palabras \"{$searchString}\" son:</h2><br><br>";
+	$sortMode = "";
+	switch($_POST['sortType']){
+		case 'relevance':
+		$sortMode = 'por relevancia';
+		break;
+		case 'last_edit_asc':
+		$sortMode = 'por fecha ascendente';
+		break;
+		case 'last_edit_desc':
+		$sortMode = 'por fecha descendente';
+		break;
+		case 'pageSizeAsc':
+		$sortMode = 'por tamaño de página ascendente';
+		break;
+		case 'pageSizeDes':
+		$sortMode = 'por tamaño de página descendente';
+		break;
+		case 'none':
+		$sortMode = 'sin ningún tipo de ordenamiento';
+		break;
+	}
+	if($numberOfResults > 1) {
+		echo "<hr><h2>Los {$numberOfResults} resultados de la búsqueda con las palabras \"{$searchString}\" {$sortMode} son:</h2><br><br>";
+	} elseif($numberOfResults == 1) {
+		echo "<hr><h2>El {$numberOfResults}er resultado de la búsqueda con las palabras \"{$searchString}\" {$sortMode} es:</h2><br><br>";
+	} else {
+		echo "<hr><h2>Se encontraron {$numberOfResults} resultados de la búsqueda con las palabras \"{$searchString}\".</h2><br><br>";
+	}
+
 	echo "<div class=\"subContainer\">";
 	foreach($wikiPages as $wiki){
 		$date = date('d/m/Y H:i:s', strtotime($wiki[3]));
@@ -89,4 +117,5 @@
 			onclick=\"window.open(this.href,'_blank');return false;\">{$wikiURL}{$wiki[0]}</a></p><br><br>";
 	}
 	echo "</div>";
+
 ?>
