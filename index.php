@@ -25,7 +25,7 @@
 	<form id="buscador" action="" class="form" method="POST"
 	action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 		<input class="searchBox" name="searchBox" type="text"
-		placeholder="buscar artículos" required results="0">
+		placeholder="Buscar en Wikipedia" required results="0">
 		<!-- Listas de selección de idiomas con opciones (para una opción) -->
 		<!-- El idioma por defecto es el Español -->
 		<hr>
@@ -43,16 +43,17 @@
 						id="sortType"
 						required>
 			<option value="" selected disabled>Seleccionar un tipo de ordenamiento</option>
-			<option value="rel">Relevancia</option>
-			<option value="dateAsc">Fecha Ascendente</option>
-			<option value="dateDes">Fecha Descendente</option>
+			<option value="relevance">Relevancia</option>
+			<option value="last_edit_asc">Fecha Ascendente</option>
+			<option value="last_edit_desc">Fecha Descendente</option>
 			<option value="pageSizeAsc">Tamaño de página ascendente</option>
 			<option value="pageSizeDes">Tamaño de página descendente</option>
 			<option value="none">Ninguno</option>
 		</select>
+		<br>
 		<input class="numberOfArticles"
 					type="number" id="numberOfArticles"
-					placeholder="Cantidad de artículos"
+					placeholder="Cantidad de artículos (500 máx)"
 					name="numberOfArticles" min="1" max="500"
 					required>
 		<hr>
@@ -71,9 +72,7 @@
 	</section>
 	<br>
 	<hr>
-	<footer>
-		Creado por <a href="https://github.com/EdgarSabidoC">Edgar Sabido Cortés</a>
-	</footer>
+	<?php include "scripts/footer.php" ?>
 </body>
 <script src="scripts/reenvio.js"></script>
 </html>

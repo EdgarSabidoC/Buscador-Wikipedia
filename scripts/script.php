@@ -1,24 +1,20 @@
 <?php
-	include "formValidations.php";
-
-	if (!checkLang() || !checkSortType()) {
-		exit;
-	}
+	include 'formValidations.php';
 
 	// Cadena a buscar:
-	$searchString = $_POST["searchBox"];
+	$searchString = $_POST['searchBox'];
 
 	// Tipo de ordenamiento:
-	$sortType = checkSortType();
+	$sortType = $_POST['sortType'];
 
-	// Lenguaje:
-	$lang = checkLang();
+	// Lenguaje de la Wikipedia:
+	$lang = $_POST['languages'];
 
-	// Número de artículos:
-	$numberOfArticles = $_POST["numberOfArticles"];
+	// Cantidar de artículos a buscar:
+	$numberOfArticles = $_POST['numberOfArticles'];
 
 	// Se checa el tipo de ordenamiento:
-	if ($sortType != 'pageSizeAsc' && $sortType != 'pageSizeDes') {
+	if ($sortType != 'pageSizeDes' && $sortType != 'pageSizeAsc') {
 		// Parámetros para la generación de la URL (de acuerdo a
 		// la documentación oficial):
 		$params = [
@@ -30,8 +26,6 @@
 			"format" => "json"
 		];
 	} else {
-		// Parámetros para la generación de la URL
-		// (de acuerdo a la documentación oficial):
 		$params = [
 			"action" => "query",
 			"list" => "search",
@@ -75,25 +69,24 @@
 		$search['snippet']);
 	}
 
-	// Se generan los párrafos con la información obtenida:
+	$wikiURL = "https://{$lang}.wikipedia.org/?curid=";
+
+	// Se generan los párrafos con la información obtenida dentro del contenedor:
 	$numberOfResults = count($results['query']['search']);
-	echo "<h2>Los {$numberOfResults} resultados de la búsqueda con las palabras \"{$searchString}\" son:</h2><br><br>";
-	$cont = 1; // Contador que sirve para imprimir un emoji para regresar al inicio de la página.
+	echo "<hr><h2>Los {$numberOfResults} resultados de la búsqueda con las palabras \"{$searchString}\" son:</h2><br><br>";
+	echo "<div class=\"subContainer\">";
 	foreach($wikiPages as $wiki){
 		$date = date('d/m/Y H:i:s', strtotime($wiki[3]));
-		"{$wiki[1]}<br>" .
+		echo "<p class=\"text\"><a onclick=\"window.open(this.href,'_blank');return false;\"
+																href=\"{$wikiURL}{$wiki[0]}
+																rel=\"nofollow\"
+																class=\"datumTitle\">{$wiki[1]}<br></a>" .
 		"{$wiki[4]}<br>" .
-		"<span class=\"datum\">Size (in bytes):</span> {$wiki[2]}<br>" .
-		"<span class=\"datum\">Last edition:</span> {$date}<br>" .
-		"<span class=\"datum\">URL:</span> <a href=\"https://{$lang}.wikipedia.org/?curid=$wiki[0]
-			target=\"_blank\"
-			rel=\"nofollow\">https://{$lang}.wikipedia.org/?curid=$wiki[0]</a></p><br><br>";
-			if ($cont % 10 === 0) {
-				echo "<a class=\"emoji\" href=\"index.php#inicio\">⬆️</a>";
-			}
-			$cont++;
+		"<span class=\"datum\">Tamaño de la página (en bytes):</span><span class=\"data\"> {$wiki[2]}</span><br>" .
+		"<span class=\"datum\">Última edición:</span><span class=\"data\"> {$date}</span><br>" .
+		"<a class=\"url\" href=\"{$wikiURL}{$wiki[0]}
+			rel=\"nofollow\"
+			onclick=\"window.open(this.href,'_blank');return false;\">{$wikiURL}{$wiki[0]}</a></p><br><br>";
 	}
-
-	// echo "<p class=\"text\"><span class=\"datum\">Title:</span> {$wiki[1]}<br>" .
-			// "<span class=\"datum\">Snippet:</span> {$wiki[4]}<br>" .
+	echo "</div>";
 ?>
