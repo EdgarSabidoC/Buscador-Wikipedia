@@ -9,4 +9,4 @@ Este buscador permite encontrar y listar una cantidad a elegir de artículos de 
 |Edgar Sabido <br> [@EdgarSabidoC](https://github.com/EdgarSabidoC)|
 
 ## Ejemplo
-<img src="https://user-images.githubusercontent.com/63131135/187785390-00d7c112-0783-42b1-8e3f-34828b7dfc81.png">
+<img src="https://user-images.githubusercontent.com/63131135/187785902-259b9bcf-1a7d-4ea5-b636-f27d02a3b730.png">
