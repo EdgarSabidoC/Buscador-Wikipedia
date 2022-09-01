@@ -1,4 +1,6 @@
 <?php
+	// Script que contiene las validaciones y
+	// la función para la generación de la URL:
 	include 'formValidations.php';
 
 	// Cadena a buscar:
@@ -15,8 +17,6 @@
 
 	// Se checa el tipo de ordenamiento:
 	if ($sortType != 'pageSizeDes' && $sortType != 'pageSizeAsc') {
-		// Parámetros para la generación de la URL (de acuerdo a
-		// la documentación oficial):
 		$params = [
 			"action" => "query",
 			"list" => "search",
@@ -26,11 +26,12 @@
 			"format" => "json"
 		];
 	} else {
+		// Si se ordena por tamaño de página ascendente o descendente:
 		$params = [
 			"action" => "query",
 			"list" => "search",
 			"srsearch" => $searchString,
-			"srsort" => 'relevance',
+			"srsort" => 'none',
 			"srlimit" => $numberOfArticles,
 			"format" => "json"
 		];
@@ -43,20 +44,20 @@
 	$url =  genURL( $params, $endPoint );
 
 	// Se realiza la petición con file_get_contents() y
-	// se decodifica el JSON:
+	// se decodifica el JSON que se obtiene como respuesta de la API:
 	$results = json_decode( file_get_contents($url), true );
 
-	// Array asociativo que guardo los resultados obtenidos, $wikiPages['pageid']:
+	// Array asociativo que guardo los resultados obtenidos, las $wikiPages['pageid']:
 	$wikiPages = [];
 
-	// Si se decidió ordenar por tamaño de página:
+	// Si el tipo de ordenamiento es por tamaño de página:
 	if($sortType === 'pageSizeDes') {
-			// Se ordena por tamaño de página de forma descendente:
+			// De forma descendente:
 			usort($results['query']['search'], function ($a, $b) {
 				return $b['size'] <=> $a['size'];
 			});
 		} elseif($sortType === 'pageSizeAsc') {
-			// Se ordena por tamaño de página de forma ascendente:
+			// De forma ascendente:
 			usort($results['query']['search'], function ($a, $b) {
 				return $a['size'] <=> $b['size'];
 			});
@@ -69,10 +70,13 @@
 		$search['snippet']);
 	}
 
+	// URL de Wikipedia con el lenguaje seleccionado:
 	$wikiURL = "https://{$lang}.wikipedia.org/?curid=";
 
-	// Se generan los párrafos con la información obtenida dentro del contenedor:
 	$numberOfResults = count($results['query']['search']);
+
+	// Modificaciones del texto a desplegar con los resultados
+	// según el tipo de ordenamiento:
 	$sortMode = "";
 	switch($_POST['sortType']){
 		case 'relevance':
@@ -93,14 +97,16 @@
 		case 'none':
 		$sortMode = 'sin ningún tipo de ordenamiento';
 		break;
-	}
+	} // Fin Switch
+
+	// Se generan los párrafos con la información obtenida dentro del contenedor:
 	if($numberOfResults > 1) {
 		echo "<hr><h2>Los {$numberOfResults} resultados de la búsqueda con las palabras \"{$searchString}\" {$sortMode} son:</h2><br><br>";
 	} elseif($numberOfResults == 1) {
 		echo "<hr><h2>El {$numberOfResults}er resultado de la búsqueda con las palabras \"{$searchString}\" {$sortMode} es:</h2><br><br>";
 	} else {
 		echo "<hr><h2>Se encontraron {$numberOfResults} resultados de la búsqueda con las palabras \"{$searchString}\".</h2><br><br>";
-	}
+	} // Fin if-elseif-else
 
 	echo "<div class=\"subContainer\">";
 	foreach($wikiPages as $wiki){
@@ -116,6 +122,6 @@
 			rel=\"nofollow\"
 			onclick=\"window.open(this.href,'_blank');return false;\">{$wikiURL}{$wiki[0]}</a></p><br><br>";
 	}
-	echo "</div>";
+	echo "</div>"; // Fin del contenedor con los resultados
 
 ?>
