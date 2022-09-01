@@ -3,14 +3,14 @@ html {
 	scroll-behavior: smooth;
 }
 
-/* Se reinician los valores de todo */
+/* Se reinician los valores de toda la página */
 * {
 	font-family: "Anton", sans-serif;
 	box-sizing: border-box;
 	text-decoration: none;
 }
 
-/* Valores del body */
+/* Modifica la apariencia del body en general */
 body {
 	background-color: rgb(37, 37, 37);
 	color: lightgoldenrodyellow;
@@ -19,34 +19,35 @@ body {
 	margin-right: 0;
 }
 
-/* Valores de la clase form */
+/* Modifica la apariencia del formulario en general */
 .form {
 	text-align: center;
 }
 
-/* Valores de la clase searchBox */
+/* Modifica la apariencia de la caja de búsqueda */
 .searchBox {
 	width: 40vh;
 }
 
-/* Valores del elemento select */
+/* Modifica la apariencia del elemento select */
 select {
 	margin-bottom: 16px;
 }
 
-/* Se ocultan las barras de la etiqueta <hr> */
+/* Modifica la apariencia de las barras del
+elemento <hr> ocultándolas de la pantalla */
 hr {
 	clear: both;
 	visibility: hidden;
 }
 
-/* Valores del elemento h1 */
+/* Modifica la apariencia del elemento h1 */
 h1 {
 	text-align: center;
 	margin-bottom: 0;
 }
 
-/* Valores del elemento h2 */
+/* Modifica la apariencia del elemento h2 */
 h2 {
 	margin: 0;
 }
@@ -71,6 +72,8 @@ h2 {
 	text-align: left;
 }
 
+/* Modifica la apariencia del contenedor
+generado con PHP con los resultados */
 .subContainer {
 	width: 100%;
 	overflow: auto;
@@ -80,6 +83,8 @@ h2 {
 	text-align: left;
 }
 
+/* Modifica la apariencia de los subtítulos y datos de
+los resultados */
 .subtitle,
 .datum {
 	color: rgb(137, 195, 214);
@@ -87,21 +92,30 @@ h2 {
 	font-size: 13px;
 }
 
+/* Modifica la apariencia de la información
+desplegada de tamaño de página y última edición
+en el contenedor de resultados */
 .data {
 	font-size: 13px;
 }
 
+/* Modifica la apariencia de los títulos de cada
+uno de los artículos de los resultados
+en el contenedor */
 .datumTitle {
 	color: lightblue;
 	font-weight: bold;
 	font-size: 20px;
 }
 
+/* Modifica la apariencia general del texto de toda
+la página */
 .text {
 	display: inline;
 	color: lightgoldenrodyellow;
 }
 
+/* Modifica la apariencia del footer */
 footer {
 	position: fixed;
 	bottom: 8px;
@@ -110,6 +124,8 @@ footer {
 	text-align: center;
 }
 
+/* Modifica la apariencia de la caja de la entrada
+de datos del número de artículos */
 .numberOfArticles {
 	width: 180px;
 }
