@@ -10,7 +10,8 @@ Este buscador permite encontrar y listar una cantidad a elegir de artículos de 
 
 
 ## Apariencia del buscador
-<img src="https://user-images.githubusercontent.com/63131135/187785902-259b9bcf-1a7d-4ea5-b636-f27d02a3b730.png">
+<img src="https://user-images.githubusercontent.com/63131135/187828893-d4ed0574-e61f-48a9-8c3b-3ce94ac7dce2.PNG">
+
 
 
 ## Ejemplo del JSON obtenido como respuesta de la API de Wikipedia Search:
